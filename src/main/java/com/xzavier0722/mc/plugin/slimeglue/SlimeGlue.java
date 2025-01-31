@@ -1,5 +1,6 @@
 package com.xzavier0722.mc.plugin.slimeglue;
 
+import com.molean.Folia;
 import com.xzavier0722.mc.plugin.slimefuncomplib.ICompatibleSlimefun;
 import com.xzavier0722.mc.plugin.slimeglue.listener.BlockListener;
 import com.xzavier0722.mc.plugin.slimeglue.listener.PluginListener;
@@ -14,9 +15,11 @@ import com.xzavier0722.mc.plugin.slimeglue.slimefun.GlueProtectionModule;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.ProtectionManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class SlimeGlue extends JavaPlugin implements SlimefunAddon {
@@ -49,7 +52,7 @@ public final class SlimeGlue extends JavaPlugin implements SlimefunAddon {
         if (!registerSfProtectionModule()) {
             logger.w("- Failed to register protection module, schedule the retry task after the server started.");
             AtomicInteger counter = new AtomicInteger();
-            getServer().getScheduler().runTaskTimer(this, task -> {
+            Bukkit.getAsyncScheduler().runAtFixedRate(this, task -> {
                 if (registerSfProtectionModule()) {
                     logger.i("Protection module is registered!");
                     task.cancel();
@@ -59,7 +62,7 @@ public final class SlimeGlue extends JavaPlugin implements SlimefunAddon {
                     logger.e("Failed to register the slimefun protection module, some function may not work properly");
                     task.cancel();
                 }
-            }, 1, 20);
+            }, 50, 20 * 50, TimeUnit.MILLISECONDS);
         }
 
         logger.i("- SlimeGlue Started!");
