@@ -1,16 +1,12 @@
 package com.xzavier0722.mc.plugin.slimeglue;
 
-import com.molean.Folia;
 import com.xzavier0722.mc.plugin.slimefuncomplib.ICompatibleSlimefun;
 import com.xzavier0722.mc.plugin.slimeglue.listener.BlockListener;
 import com.xzavier0722.mc.plugin.slimeglue.listener.PluginListener;
 import com.xzavier0722.mc.plugin.slimeglue.listener.SlimefunCompListener;
 import com.xzavier0722.mc.plugin.slimeglue.listener.SlimefunListener;
 import com.xzavier0722.mc.plugin.slimeglue.manager.CompatibilityModuleManager;
-import com.xzavier0722.mc.plugin.slimeglue.module.KingdomsXModule;
-import com.xzavier0722.mc.plugin.slimeglue.module.LocketteProModule;
-import com.xzavier0722.mc.plugin.slimeglue.module.MagicModule;
-import com.xzavier0722.mc.plugin.slimeglue.module.QuickShopModule;
+import com.xzavier0722.mc.plugin.slimeglue.module.*;
 import com.xzavier0722.mc.plugin.slimeglue.slimefun.GlueProtectionModule;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -101,6 +97,7 @@ public final class SlimeGlue extends JavaPlugin implements SlimefunAddon {
         moduleManager().register(new KingdomsXModule());
         moduleManager().register(new MagicModule());
         moduleManager().register(new QuickShopModule());
+        moduleManager().register(new QuickShopHikariModule());
         moduleManager().register(new LocketteProModule());
     }
 

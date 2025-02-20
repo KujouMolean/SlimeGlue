@@ -16,7 +16,7 @@
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Paper properties -->
-        <paper.version>1.21</paper.version>
+        <paper.version>1.21.4</paper.version>
         <paper.javadocs>https://papermc.io/javadocs</paper.javadocs>
     </properties>
     <url>https://github.com/Xzavier0722/SlimeGlue</url>
@@ -44,6 +44,11 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <artifactSet>
+                                <includes>
+                                    <!--empty-->
+                                </includes>
+                            </artifactSet>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
@@ -93,6 +98,10 @@
             <id>lss233-mirror</id>
             <url>https://lss233.littleservice.cn/repositories/minecraft</url>
         </repository>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -101,6 +110,12 @@
             <artifactId>paper-api</artifactId>
             <version>${paper.version}-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.molean</groupId>
+            <artifactId>FoliaAdapter</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <classifier>dev</classifier>
         </dependency>
         <dependency>
             <groupId>com.github.Slimefun</groupId>
@@ -119,6 +134,13 @@
             <artifactId>kingdoms</artifactId>
             <version>1.13.9</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.ghostchu</groupId>
+            <artifactId>quickshop-bukkit</artifactId>
+            <version>6.2.0.8</version>
+            <scope>provided</scope>
+            <classifier>shaded</classifier>
         </dependency>
         <dependency>
             <groupId>org.maxgamer</groupId>
